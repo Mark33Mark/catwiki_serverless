@@ -10,8 +10,9 @@ const MorePics = (id) => {
 
   useEffect(() => {
     const getResponse = async () => {
-      const result = await fetch(`/more-pics/${id.breedId}`, {
-        method: "GET",
+      const result = await fetch(".netlify/functions/pics", {
+        method: 'POST',
+        body: JSON.stringify(id.breedId)
       });
 
       const json = await result.json();
@@ -19,12 +20,12 @@ const MorePics = (id) => {
       setTimeout(() => {
         setLoading(false);
       }, 1500);
-      setGallery(json);
+      setGallery(JSON.parse(json));
     };
     getResponse();
   }, []);
 
-  console.log(gallery);
+  console.log("gallery = ", typeof gallery);
 
   return loading ? (
     <LoadingSpinner />

@@ -16,13 +16,14 @@ const BreedInfo = () => {
   console.log("Breed selected = " + breedSelected.name);
 
   useEffect(() => {
-    fetch(`/${breedSelected.name}`, {
-      headers: { breed: `${breedSelected.name}` },
+    fetch(`/.netlify/functions/breeds`, {
+      method: 'POST',
+      body: JSON.stringify({ breed: `${breedSelected.name}` }),
     })
       .then((res) => res.json())
       .then((data) => setInfo(data))
 
-      .then(setTimeout(() => setLoading(false), 2500));
+      .then(setTimeout(() => setLoading(false), 1500));
   }, []);
 
   console.log(info);

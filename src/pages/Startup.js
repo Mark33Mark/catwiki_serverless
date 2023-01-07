@@ -19,11 +19,7 @@ const Startup = () => {
 
     setTimeout(() => {
       fetchData()
-    }, 2000);
-
-    // setTimeout(() => {
-    //   history.push(".netlify/functions/api");
-    // }, 5000);
+    }, 800);
 
   }, [data]);
 
