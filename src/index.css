@@ -1,0 +1,415 @@
+@import url("./utils/icomoon/iconfonts.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* ============================================================================ 
+
+    Running 1 style sheet as this app does not have scope to need 
+    multiple style sheets.
+
+  =============================================================================*/
+
+.Startup {
+  text-align: center;
+}
+
+.Startup-logo {
+  height: 20vmin; /* dropped size down from 40vmin - thought it was too large.  */
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Startup-logo {
+    animation: Startup-logo-spin infinite 20s linear;
+  }
+}
+
+.Startup-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+@keyframes Startup-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.welcome-message {
+  /* margin-top: 25px;
+  font-size: 21px; */
+  text-align: center;
+
+  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: fadein 3s; /* Firefox < 16 */
+      -ms-animation: fadein 3s; /* Internet Explorer */
+       -o-animation: fadein 3s; /* Opera < 12.1 */
+          animation: fadein 3s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ========================================================================= */
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#setup_button {
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  color: black;
+  font-size: 3rem;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+#setup_button:hover,
+.button:hover {
+  animation: rotate 0.7s ease-in-out both;
+}
+
+#setup_button:hover {
+  color: orange;
+  text-shadow: 0 0 1rem 0.5rem orange;
+}
+
+/* = Header ================================================================ */
+
+div.header {
+  height: auto;
+  background: center / cover url("./assets/header.jpg") no-repeat;
+  border-radius: 0 40px 40px 0;
+  color: white;
+  max-width: 95%;
+  padding: 0.5rem 0;
+}
+
+/* = Dropdown Menu ========================================================= 
+ * Thanks to:
+ * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
+ */
+
+.homepage {
+  background-image: url("./assets/header.jpg");
+  background-color: #cccccc;
+  height: 38rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.drop-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+img.menu-image {
+  max-width: 30%;
+  height: auto;
+}
+
+.menu-trigger {
+  background: #ffffff;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  border: none;
+  vertical-align: middle;
+  transition: box-shadow 0.4s ease;
+  margin-left: auto; /* Strictly for positioning */
+}
+
+.menu-trigger:hover {
+  box-shadow: -5px 5px 20px 10px rgba(255, 200, 90, 0.6);
+}
+
+.menu-trigger div {
+  font-weight: 700;
+  vertical-align: middle;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.menu-trigger img {
+  border-radius: 90px;
+}
+
+.menu {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 8rem;
+  right: 0;
+  width: 16rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 20rem;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #dddddd;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333333;
+  padding: 1rem;
+  display: block;
+}
+
+/* = Dashboard ================================================================
+ * Thanks to:
+ * https://github.com/ashleypean/cat-wiki
+ */
+
+div.breed-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin: 2rem 0 1rem 0;
+  padding: 0 2rem;
+}
+
+div.breed-data div.photo-container {
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+  align-self: center;
+  margin: 0 0 2rem;
+}
+
+div.breed-data div.photo-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: -5px 10px 20px 10px rgba(0, 0, 0, 30%);
+}
+
+div.breed-data div.text {
+  margin: 0 0 1.4rem 0;
+}
+
+div.breed-data div.text h4 {
+  font-weight: 550;
+  font-size: 2rem;
+  margin: 0;
+}
+
+div.breed-data div.text p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+div.breed-data div.info {
+  margin: 2rem 0;
+}
+
+div.breed-data div.info p {
+  font-size: 1rem;
+}
+
+div.breed-data div.info span {
+  font-weight: 600;
+}
+
+div.rating {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+div.rating span.stat {
+  font-weight: 600;
+  font-size: 0.8rem;
+  width: 35%;
+  max-width: 5rem;
+}
+
+div.breed-data div.info div.rating-container {
+  width: 65%;
+  max-width: 10rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.breed-data div.info div.rating-container div.brown-bg {
+  display: inline-block;
+  height: 0.45rem;
+  width: 1rem;
+  background-color: #544439;
+  border: 1px solid #544439;
+  border-radius: 12px;
+  margin: 0 0.2rem;
+}
+
+div.breed-data div.info div.rating-container div.no-bg {
+  display: inline-block;
+  height: 0.45rem;
+  width: 1rem;
+  background-color: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin: 0 0.2rem;
+}
+
+@media screen and (min-width: 700px) {
+  div.breed-data {
+    flex-direction: row;
+  }
+
+  div.breed-data div.photo-container {
+    align-self: flex-start;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  div.breed-data div.right {
+    width: 60%;
+  }
+
+  div.breed-data div.right div.text {
+    width: 80%;
+  }
+
+  div.rating {
+    width: 60%;
+  }
+}
+
+/* = MorePics =================================================================
+ * Thanks to:
+ * https://github.com/ashleypean/cat-wiki
+ */
+
+div.other-photos {
+  display: flex;
+  height: auto;
+  padding: 0 2rem;
+}
+
+div.other-photos h3 {
+  font-weight: 500;
+}
+
+div.other-photos div.photos a {
+  height: auto;
+  align-items: space-between;
+  width: 100%;
+}
+
+div.other-photos div.photos a img {
+  background-color: rgb(65, 65, 65);
+  width: 44%;
+  height: 7rem;
+  object-fit: scale-down;
+  margin: 5% 2.5%;
+  border-radius: 12px;
+}
+
+@media screen and (min-width: 700px) {
+  div.other-photos div.photos {
+    height: auto;
+  }
+
+  div.other-photos div.photos a img {
+    width: 23%;
+    height: 9rem;
+    margin: 1.5% 1%;
+  }
+}
+
+/* ========================================================================= 
+============================================================================*/

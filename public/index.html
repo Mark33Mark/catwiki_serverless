@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>Kitty-Wiki | a cat breed information app</title>
+
+    <!--- basic page needs and meta to boost SEO
+    ================================================== -->
+    <meta
+      name="description"
+      content="Kitty-Wiki - a simple application for cat lovers to get information on all the different breeds of domestic cats."
+    />
+    <meta name="author" content="Mark Watson" />
+    <meta
+      name="KEYWORDS"
+      content="full stack developer, cats, kittens, kitty-wiki, cat-pedia, cat encyclopedia,
+                                  React, PWA"
+    />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo128.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="root"></div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("%PUBLIC_URL%/service-worker.js")
+
+            .then((registration) =>
+              // Registration was successful
+              console.log(
+                "Service worker registration successful with scope: ",
+                registration.scope
+              )
+            )
+
+            .catch((error) =>
+              // registration failed :(
+              console.log("Service worker registration failed: ", error)
+            );
+        });
+      } else {
+        console.log('Service Worker files are not supported by browser. This app is not installable.');
+      }
+    </script>
+  </body>
+</html>
